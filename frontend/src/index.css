@@ -1,0 +1,86 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base - IKEA Style */
+body {
+  font-family: "Inter", "Verdana", system-ui, Arial, sans-serif;
+  background-color: #ffffff;
+  color: #111111;
+  line-height: 1.5;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Container - IKEA Style */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Buttons - IKEA Style */
+.btn {
+  padding: 12px 24px;
+  border-radius: 0;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background: #0058A3;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #004080;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: white;
+  border: 2px solid #0058A3;
+  color: #0058A3;
+}
+
+.btn-outline:hover {
+  background: #0058A3;
+  color: white;
+}
+
+.btn-yellow {
+  background: #FFCC00;
+  color: #111111;
+}
+
+.btn-yellow:hover {
+  background: #E6B800;
+}
+
+/* Cards - IKEA Style */
+.card {
+  background: white;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}

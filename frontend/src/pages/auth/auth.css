@@ -1,0 +1,90 @@
+/* IKEA Style Auth */
+.auth-wrapper {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  background: #ffffff;
+  position: relative;
+}
+
+.auth-card {
+  background: white;
+  padding: 48px;
+  border-radius: 0;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border: 2px solid #e8e8e8;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-card h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #111;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  border: 2px solid #e8e8e8;
+  border-radius: 0;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.2s;
+  background: white;
+  color: #111;
+}
+
+.auth-card input:focus {
+  outline: none;
+  border-color: #0058A3;
+  box-shadow: 0 0 0 3px rgba(0, 88, 163, 0.1);
+}
+
+.auth-card .btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 8px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.auth-card .btn-primary {
+  background: #0058A3;
+  color: white;
+}
+
+.auth-card .btn-primary:hover {
+  background: #004080;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 88, 163, 0.3);
+}
+
+.auth-card p {
+  text-align: center;
+  margin-top: 24px;
+  color: #666;
+  font-size: 14px;
+}
+
+.auth-card a {
+  color: #0058A3;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.auth-card a:hover {
+  color: #003d6b;
+  text-decoration: underline;
+}

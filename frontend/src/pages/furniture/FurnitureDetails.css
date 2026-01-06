@@ -1,0 +1,265 @@
+/* IKEA Style Product Details */
+.details-container {
+  max-width: 1400px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+.details-card {
+  background: white;
+  border-radius: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  padding: 0;
+  box-shadow: none;
+}
+
+.image-section {
+  position: relative;
+}
+
+/* MAIN IMAGE WITH SLIDER */
+.main-image-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 0;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #0058A3;
+  width: 48px;
+  height: 48px;
+  border-radius: 0;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 10;
+  color: #0058A3;
+  font-weight: 700;
+}
+
+.nav-btn:hover {
+  background: #0058A3;
+  color: white;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.prev-btn {
+  left: 16px;
+}
+
+.next-btn {
+  right: 16px;
+}
+
+/* THUMBNAIL GALLERY */
+.thumbnail-container {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  overflow-x: auto;
+  padding: 4px;
+}
+
+.thumbnail-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.thumbnail-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.thumbnail-container::-webkit-scrollbar-thumb {
+  background: #0058A3;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 0;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.thumbnail:hover {
+  border-color: #FFCC00;
+  transform: scale(1.05);
+}
+
+.thumbnail.active {
+  border-color: #0058A3;
+  box-shadow: 0 2px 8px rgba(0, 88, 163, 0.3);
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 48px 0;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.product-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.2;
+  flex: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+}
+
+.product-category {
+  font-size: 14px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.price-section {
+  padding: 24px 0;
+  border-top: 2px solid #e8e8e8;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.price-currency {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+}
+
+.price-amount {
+  font-size: 42px;
+  font-weight: 700;
+  color: #111;
+}
+
+.price-period {
+  font-size: 18px;
+  color: #666;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.security-deposit {
+  font-size: 14px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.specs-section {
+  margin-top: 8px;
+}
+
+.specs-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.spec-item {
+  padding: 16px;
+  background: #f8f8f8;
+  border-radius: 0;
+  border-left: 3px solid #0058A3;
+}
+
+.spec-item label {
+  display: block;
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.spec-item span {
+  font-size: 16px;
+  color: #111;
+  font-weight: 600;
+}
+
+.action-section {
+  margin-top: 24px;
+}
+
+.action-section .btn {
+  width: 100%;
+  padding: 18px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .details-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .main-image-container {
+    height: 350px;
+  }
+
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-header {
+    flex-direction: column;
+  }
+
+  .product-title {
+    font-size: 28px;
+  }
+}
