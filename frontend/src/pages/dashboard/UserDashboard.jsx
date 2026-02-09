@@ -28,10 +28,14 @@ const UserDashboard = () => {
   const [history, setHistory] = useState([]);
 
   const loadDashboard = async () => {
-    const res = await API.get("/dashboard/user");
-    setListed(res.data.listed);
-    setRented(res.data.rented);
-    setHistory(res.data.history);
+    try {
+      const res = await API.get("/dashboard/user");
+      setListed(res.data.listed || []);
+      setRented(res.data.rented || []);
+      setHistory(res.data.history || []);
+    } catch (err) {
+      console.error("Failed to load dashboard:", err);
+    }
   };
 
   useEffect(() => {
@@ -39,8 +43,17 @@ const UserDashboard = () => {
   }, []);
 
   const returnFurniture = async (id) => {
-    await API.post(`/furniture/${id}/return`);
-    loadDashboard();
+    if (!window.confirm("Are you sure you want to return this furniture?")) {
+      return;
+    }
+    
+    try {
+      await API.post(`/furniture/${id}/return`);
+      alert("Furniture returned successfully!");
+      loadDashboard();
+    } catch (err) {
+      alert(err.response?.data?.message || "Failed to return furniture");
+    }
   };
 
   /* ===== CHART DATA (SOFT PINK THEME) ===== */

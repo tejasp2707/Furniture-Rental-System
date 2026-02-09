@@ -1,18 +1,30 @@
 import { useEffect, useState } from "react";
-import API from "../../services/api";
-import { Link } from "react-router-dom";
+import API, { getImageUrl } from "../../services/api";
+import { Link, useNavigate } from "react-router-dom";
 import "./FurnitureList.css";
 
 const FurnitureList = () => {
+  const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState("");
 
   useEffect(() => {
-    API.get("/furniture").then(res => {
-      setItems(res.data);
-      setFilteredItems(res.data);
-    });
+    const loadFurniture = async () => {
+      try {
+        const res = await API.get("/furniture");
+        setItems(res.data || []);
+        setFilteredItems(res.data || []);
+      } catch (err) {
+        console.error("Failed to load furniture:", err);
+        if (!err.response) {
+          console.error("Network error: Backend may not be running");
+        }
+        setItems([]);
+        setFilteredItems([]);
+      }
+    };
+    loadFurniture();
   }, []);
 
   useEffect(() => {
@@ -35,9 +47,20 @@ const FurnitureList = () => {
             Quality furniture rentals made simple and affordable. 
             Create a home that is perfect for you.
           </p>
-          <Link to="/furniture" className="btn btn-yellow hero-cta">
+          <button 
+            className="btn btn-yellow hero-cta"
+            onClick={() => {
+              const token = localStorage.getItem("token");
+              if (!token) {
+                navigate("/register");
+              } else {
+                // Scroll to products
+                window.scrollTo({ top: document.querySelector('.category-nav').offsetTop, behavior: 'smooth' });
+              }
+            }}
+          >
             Shop now
-          </Link>
+          </button>
         </div>
       </section>
 
@@ -83,7 +106,7 @@ const FurnitureList = () => {
               <Link key={f._id} to={`/furniture/${f._id}`} className="card product-card">
                 <div className="product-image-wrapper">
                   <img 
-                    src={f.images?.[0] || "https://via.placeholder.com/400x300?text=Furniture"} 
+                    src={getImageUrl(f.images?.[0])} 
                     alt={f.name}
                     className="product-image"
                   />

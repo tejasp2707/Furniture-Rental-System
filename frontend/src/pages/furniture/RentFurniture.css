@@ -1,0 +1,48 @@
+.rent-form {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 2px solid #e8e8e8;
+}
+
+.rent-form .form-group {
+  margin-bottom: 24px;
+}
+
+.rent-form .form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rent-form .form-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #e8e8e8;
+  border-radius: 0;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.2s;
+  background: white;
+  color: #111;
+}
+
+.rent-form .form-input:focus {
+  outline: none;
+  border-color: #0058A3;
+  box-shadow: 0 0 0 3px rgba(0, 88, 163, 0.1);
+}
+
+.rent-form .action-section {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.rent-form .action-section .btn {
+  flex: 1;
+}
+

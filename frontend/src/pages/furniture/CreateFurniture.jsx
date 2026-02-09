@@ -54,17 +54,20 @@ const CreateFurniture = () => {
         formData.append('images', file);
       });
 
-      await API.post("/furniture", formData, {
+      const response = await API.post("/furniture", formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
       
-      alert("Furniture added successfully");
-      window.location.href = "/furniture";
+      if (response.data) {
+        alert("Furniture added successfully!");
+        window.location.href = "/furniture";
+      }
     } catch (err) {
-      console.error(err);
-      alert("Failed to add furniture");
+      console.error("Error creating furniture:", err);
+      const errorMessage = err.response?.data?.message || err.message || "Failed to add furniture";
+      alert(`Error: ${errorMessage}`);
     }
   };
 

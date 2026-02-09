@@ -13,7 +13,7 @@ const furnitureSchema = new mongoose.Schema(
       enum: ["Wood", "Metal", "Plastic", "Fabric"],
       required: true
     },
-    dimensions: { type: String, required: true },
+    dimensions: { type: String, required: false },
     color: String,
     brand: String,
     rentPerMonth: { type: Number, required: true },

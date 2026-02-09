@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import API from "../../services/api";
+import API, { getImageUrl } from "../../services/api";
 import "./FurnitureDetails.css";
 
 const FurnitureDetails = () => {
@@ -9,17 +9,24 @@ const FurnitureDetails = () => {
   const [furniture, setFurniture] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const userStr = localStorage.getItem("user");
+  const user = userStr ? JSON.parse(userStr) : null;
 
   useEffect(() => {
-    API.get(`/furniture/${id}`).then(res => setFurniture(res.data));
-  }, [id]);
+    API.get(`/furniture/${id}`)
+      .then(res => setFurniture(res.data))
+      .catch(err => {
+        console.error("Failed to load furniture:", err);
+        alert("Failed to load furniture details");
+        navigate("/furniture");
+      });
+  }, [id, navigate]);
 
   if (!furniture) return <p className="loading">Loading...</p>;
 
-  const isOwner = user && furniture.listedBy === user._id;
+  const isOwner = user && furniture.listedBy && furniture.listedBy.toString() === user._id;
   const images = furniture.images?.length > 0 
-    ? furniture.images 
+    ? furniture.images.map(img => getImageUrl(img))
     : ["https://via.placeholder.com/600x500?text=Furniture"];
 
   const nextImage = () => {
@@ -114,6 +121,17 @@ const FurnitureDetails = () => {
               <Link to={`/edit-furniture/${furniture._id}`} className="btn btn-outline">
                 Edit Furniture
               </Link>
+            ) : furniture.availabilityStatus === "Rented" ? (
+              <button className="btn btn-outline" disabled>
+                Currently Rented
+              </button>
+            ) : !user ? (
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate("/register")}
+              >
+                Login to Rent
+              </button>
             ) : (
               <button
                 className="btn btn-primary"

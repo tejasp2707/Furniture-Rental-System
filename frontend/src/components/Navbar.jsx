@@ -34,7 +34,7 @@ const Navbar = () => {
               className="search-input"
             />
             <span className="search-icon">🔍</span>
-          </div>
+        </div>
 
           {/* USER SECTION */}
           {token ? (

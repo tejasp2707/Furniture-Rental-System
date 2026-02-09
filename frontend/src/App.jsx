@@ -9,6 +9,8 @@ import Register from "./pages/auth/Register";
 import FurnitureList from "./pages/furniture/FurnitureList";
 import FurnitureDetails from "./pages/furniture/FurnitureDetails";
 import CreateFurniture from "./pages/furniture/CreateFurniture";
+import EditFurniture from "./pages/furniture/EditFurniture";
+import RentFurniture from "./pages/furniture/RentFurniture";
 import UserDashboard from "./pages/dashboard/UserDashboard";
 import SystemDashboard from "./pages/dashboard/SystemDashboard";
 
@@ -29,6 +31,24 @@ function App() {
           element={
             <ProtectedRoute>
               <CreateFurniture />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/edit-furniture/:id"
+          element={
+            <ProtectedRoute>
+              <EditFurniture />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/rent/:id"
+          element={
+            <ProtectedRoute>
+              <RentFurniture />
             </ProtectedRoute>
           }
         />
